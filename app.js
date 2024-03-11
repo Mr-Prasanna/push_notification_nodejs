@@ -1,12 +1,3 @@
-// import { initializeApp,applicationDefault } from 'firebase-admin/app';
-// import { getMessaging } from "firebase-admin/messaging";
-// import express,{json} from "express";
-// import cors from "cors";
-// import bodyParser from "body-parser";
-// import cookieParser from "cookie-parser";
-// import pushNotifications from "./Notifications/notification";
-// import serviceAccount from "./firebase.config.json";
-// import initRouter from "./Controller/attendanceController";
 const express = require('express');
 const {initializeApp,applicationDefault} = require('firebase-admin/app');
 const  getMessaging = require('firebase-admin/messaging');
@@ -33,7 +24,7 @@ initializeApp({
 // module.exports ={admin} ;
 
 const PORT = 8080;
-const initRouter= require('./Controller/attendanceController');
+// const initRouter= require('./Controller/attendanceController');
 
 
 app.use(function(req, res, next) {
@@ -105,7 +96,7 @@ app.use(cors());
 app.use(express.json())
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use('/employee',initRouter)
+// app.use('/employee',initRouter)
 
 // app.use('/', pushNotifications)
 
