@@ -1,6 +1,6 @@
 const express = require('express');
 const {initializeApp,applicationDefault} = require('firebase-admin/app');
-const  getMessaging = require('firebase-admin/messaging');
+const  {getMessaging }= require('firebase-admin/messaging');
 //// const db=require('./DbConfig/mysqlDbConfig');
 const cors = require('cors');
 const app = express();
@@ -13,13 +13,13 @@ const serviceAccount = require("./firebase.config.json");
 
 process.env.GOOGLE_APPLICATION_CREDENTIALS;
 
-initializeApp({
-  credential:applicationDefault(),
-  projectId:'rn-push-notification'
-})
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount)
-// });
+// initializeApp({
+//   credential:applicationDefault(),
+//   projectId:'rn-push-notification'
+// })
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
 
 // module.exports ={admin} ;
 
@@ -44,14 +44,15 @@ app.use(
   })
 );
 app.post("/send", function (req, res) {
-  const receivedToken = req.body.fcmToken;
+  // const receivedToken = req.body.fcmToken;
+  //const receivedToken= "dtK-fN21TPSyJQns3JjL8U:APA91bGzt2VIBsETAW1OcLsiJBWP3YLsn8Nm1ImHuH7NDEzNErGZ77Fx6okHrzmwbtKCcPUcWHisckYDGhXH2mvuBWOBCXu7uOv9lcPhuafrxuQlmROsPrNUqNVmA62dQcNrjo81rIjO";
   
   const message = {
     notification: {
       title: "Test Title",
       body: 'This is a Test Notification'
     },
-    token: "dtK-fN21TPSyJQns3JjL8U:APA91bGzt2VIBsETAW1OcLsiJBWP3YLsn8Nm1ImHuH7NDEzNErGZ77Fx6okHrzmwbtKCcPUcWHisckYDGhXH2mvuBWOBCXu7uOv9lcPhuafrxuQlmROsPrNUqNVmA62dQcNrjo81rIjO",
+    token: "c1iQSWOfQ0a2bux4A-ba_1:APA91bET0Lyp3VFz7dYkzhhewWSbhZvLEzW08GjRBeL7XIvdNs5-4bsBscu25ss4Iq2CohpDalNhNUQdFdD6OTMs2nPLVRQgPTCVAxtlitg6v4Rq-Kfimv3Sjm93j-Z7FPpezwQbOW88",
   };
   
   getMessaging()
@@ -59,7 +60,7 @@ app.post("/send", function (req, res) {
     .then((response) => {
       res.status(200).json({
         message: "Successfully sent message",
-        token: receivedToken,
+       // token: receivedToken,
       });
       console.log("Successfully sent message:", response);
     })
