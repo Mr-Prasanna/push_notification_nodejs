@@ -46,13 +46,15 @@ app.use(
 app.post("/send", function (req, res) {
   // const receivedToken = req.body.fcmToken;
   //const receivedToken= "dtK-fN21TPSyJQns3JjL8U:APA91bGzt2VIBsETAW1OcLsiJBWP3YLsn8Nm1ImHuH7NDEzNErGZ77Fx6okHrzmwbtKCcPUcWHisckYDGhXH2mvuBWOBCXu7uOv9lcPhuafrxuQlmROsPrNUqNVmA62dQcNrjo81rIjO";
-  
+  const { title, body} = req.body;
   const message = {
     notification: {
-      title: "Test Title",
-      body: 'This is a Test Notification'
+      title:title,
+      body:body
+      // title: "Test Title",
+      // body: 'This is a Test Notification'
     },
-    token: "c1iQSWOfQ0a2bux4A-ba_1:APA91bET0Lyp3VFz7dYkzhhewWSbhZvLEzW08GjRBeL7XIvdNs5-4bsBscu25ss4Iq2CohpDalNhNUQdFdD6OTMs2nPLVRQgPTCVAxtlitg6v4Rq-Kfimv3Sjm93j-Z7FPpezwQbOW88",
+    token: "fWKW_BSXQ5i7IuHVS0-0Q5:APA91bGDWaaLCLQksEzOmubG8jvhaHjDb9kmmjo9Q8ozn4dbzhTLKpC72htTFH4k6P6_b9tTAKh2F3liwKnu38UASSj_FnpGoOoZZgSP9o8pjZ82_c8i9ZblJ3nPF-gBE5tLinCChQ_0",
   };
   
   getMessaging()
@@ -99,7 +101,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 // app.use('/employee',initRouter)
 
-// app.use('/', pushNotifications)
+ app.use('/', pushNotifications)
 
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`);

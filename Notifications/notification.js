@@ -1,13 +1,13 @@
 const express = require('express');
 const admin = require('firebase-admin');
-const fcmV1Http2 = require('fcm-v1-http2');
+// const fcmV1Http2 = require('fcm-v1-http2');
 
-const client = new fcmV1Http2({
-  serviceAccount : require("../firebase.config.json"),
-  maxConcurrentConnections: 10,
-  maxConcurrentStreamsAllowed: 100
+// const client = new fcmV1Http2({
+//   serviceAccount : require("../firebase.config.json"),
+//   maxConcurrentConnections: 10,
+//   maxConcurrentStreamsAllowed: 100
 
-})
+// })
 // const client = require('')
 // const serviceAccount = require("../firebase.config.json");
 
@@ -18,7 +18,7 @@ const client = new fcmV1Http2({
 
 const router = express.Router();
 
-const tokens =["dtK-fN21TPSyJQns3JjL8U:APA91bGzt2VIBsETAW1OcLsiJBWP3YLsn8Nm1ImHuH7NDEzNErGZ77Fx6okHrzmwbtKCcPUcWHisckYDGhXH2mvuBWOBCXu7uOv9lcPhuafrxuQlmROsPrNUqNVmA62dQcNrjo81rIjO"];
+const tokens =["fWKW_BSXQ5i7IuHVS0-0Q5:APA91bGDWaaLCLQksEzOmubG8jvhaHjDb9kmmjo9Q8ozn4dbzhTLKpC72htTFH4k6P6_b9tTAKh2F3liwKnu38UASSj_FnpGoOoZZgSP9o8pjZ82_c8i9ZblJ3nPF-gBE5tLinCChQ_0"];
 
 router.get("/test" ,(req,res)=>{
   res.send("Its Working now....");
@@ -28,7 +28,7 @@ router.get("/test" ,(req,res)=>{
 
 router.post("/sendNotification", async (req, res) => {
   try{
-    const { title, body} = req.body;
+    const { title, body,} = req.body;
     await admin.messaging().sendEachForMulticast({
     // await client.sendMulticast({
       tokens,
