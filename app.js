@@ -46,13 +46,11 @@ app.use(
 app.post("/send", function (req, res) {
   // const receivedToken = req.body.fcmToken;
   //const receivedToken= "dtK-fN21TPSyJQns3JjL8U:APA91bGzt2VIBsETAW1OcLsiJBWP3YLsn8Nm1ImHuH7NDEzNErGZ77Fx6okHrzmwbtKCcPUcWHisckYDGhXH2mvuBWOBCXu7uOv9lcPhuafrxuQlmROsPrNUqNVmA62dQcNrjo81rIjO";
-  const { title, body} = req.body;
+ 
   const message = {
     notification: {
-      title:title,
-      body:body
-      // title: "Test Title",
-      // body: 'This is a Test Notification'
+      title: "Test Title",
+      body: 'This is a Test Notification'
     },
     token: "fWKW_BSXQ5i7IuHVS0-0Q5:APA91bGDWaaLCLQksEzOmubG8jvhaHjDb9kmmjo9Q8ozn4dbzhTLKpC72htTFH4k6P6_b9tTAKh2F3liwKnu38UASSj_FnpGoOoZZgSP9o8pjZ82_c8i9ZblJ3nPF-gBE5tLinCChQ_0",
   };
